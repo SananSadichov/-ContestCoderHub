@@ -1,0 +1,50 @@
+/// By Sanan </>
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+#define ll long long int
+#define int ll
+#define pii pair<int,int>
+#define pb push_back
+#define S second
+#define F first
+#define endl '\n'
+#define indexed_set tree<int, null_type, less<int>, rb_tree_tag,tree_order_statistics_node_update>
+#define io ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+using namespace __gnu_pbds;
+using namespace std;
+
+
+const int N = 1000005;
+const int mod = 1e9+7;
+const int INF = 1e18;
+
+
+
+signed main()
+{
+    io;
+    int t;
+    cin >> t;
+    while(t--){
+        int a, b, r;
+        cin >> a >> b >> r;
+        if(a<b){
+            swap(a, b);
+        }
+        int ans=a-b, cnt=0, mn=ans;
+        for(int i=60; i>=0; i--){
+            if(((b>>i)&1)==0 && ((a>>i)&1)==1 && cnt+(1ll<<i)<=r){
+               if(ans>=2*(1ll<<i)){
+                    cnt+=(1ll<<i);
+                    ans-=2*(1ll<<i);
+               }
+               else{
+                mn=min(mn, 2*(1ll<<i)-ans);
+               }
+            }
+        }
+        cout<<min(ans, mn)<<endl;
+    }
+    return 0;
+}
