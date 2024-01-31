@@ -1,1 +1,1 @@
-                                                     ~ Codeforces Contests Solution
+                                                    ~ Codeforces Contests Solution
